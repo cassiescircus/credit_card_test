@@ -14,7 +14,7 @@ public class CreditCard {
         //Ask user for credit card number. store number as a String.
         System.out.println("Please enter the credit card number, digits only:");
         String ccNumber = stringScanner.nextLine();
-        boolean isValid = isValidCreditCard(ccNumber);
+        boolean isValid = isVisaCreditCardNumberValid(ccNumber);
 
         if (isValid) {
             System.out.println("This seems to be a valid credit card number");
@@ -25,12 +25,21 @@ public class CreditCard {
         stringScanner.close();
     }
 
-    public static boolean isValidCreditCard(String cc) {
+    public static boolean isVisaCreditCardNumberValid(String cardNumber) {
 
-        //TODO Replace with your code to process the credit card number, and determine if it is valid.
-        //TODO Make sure all the tests pass!
+        //tests to make sure card is a Visa
+        if (cardNumber.startsWith("4")) {
+            return true;
+        } else {
+            System.out.println("Your Visa must start with a 4.");
+        }
 
-        return false;
+        if (cardNumber.length() != 16) {
+            System.out.println("Your Visa must be 16 digits long.");
+            return false;
+        }
+
+        // TODO check digit - NOt really understanding how to do the math for this...
 
     }
 
